@@ -2,12 +2,11 @@
   docker_network:
     name: "{{ docker_network }}"
 
-- name: add port 4243 to localhost
+- name: "add port {{ docker_http_port }} to localhost"
   iptables:
    chain: INPUT
    protocol: tcp
    jump: ACCEPT
-   destination_port: 4243
-  delegate_to: localhost
-  become: true
-  ignore_errors: true
+   destination_port: " {{ docker_http_port }}"
+#  delegate_to: localhost
+#  become: true

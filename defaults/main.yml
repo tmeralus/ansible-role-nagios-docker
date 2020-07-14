@@ -1,40 +1,38 @@
 ---
-# Variables that define which compose files will be deployed
-use_centos_base_images: "yes"
-use_ubuntu_base_images: "yes"
-
-# Docker variables
-docker_inventory_group: [ 'dolly01', 'dolly02', 'dolly03',]
-docker_image_default: "tmeralus/centos7"
-docker_inventory_group2: [ 'dolly04', 'dolly05', 'dolly06',]
-docker_image_default2: "tmeralus/ansible-node"
-docker_groups: [ 'net-docks']
-docker_privileged: true
-docker_state: started
-docker_use_tls: true
-docker_stop_timeout: 1
-docker_pkgs: [ 'docker', 'docker-compose' ]
+#Docker Python versions
 docker_python_pip_ver: 3.6
-docker_pip3x_pkgs: [ 'docker>4.1.0', 'docker-compose>1.17.1' ]
 docker_use_docker_connection: true
-docker_exposed: [ "80", "443", "6379", "26379", "25" ]
-docker_ports: "22"
-docker_network: docknet
-docker_network_loop: [ 'docknet1', 'dockweb',]
-#docker_network_loop: [ 'docversion: '2' ]
-docker_network_mode: host
-docker_restart: 0
-docker_pull: 0
-docker_command: ""
-docker_ip: "127.0.0.1"
-docker_subnet: 127.0.0.0/16
-docker_gateway: 127.0.0.1
-docker_iprange: [ '127.0.0.251',]
-
+docker_pip3x_pkgs: [ 'docker>4.1.0', 'docker-compose>1.17.1' ]
 monitoring_images:
   -"tmeralus/nagios-plugins"
 
-docker_volumes: "/opt/docker" 
+docker_container_name: "nagios"
+docker_container_repo_image: "tmeralus/nagios"
+docker_volumes: "/docker"
+#  - "/docker"
+#  - "/docker/nagios"
+docker_data_volume: "/docker/nagios/"
+docker_network: docknet_dev
+docker_http_port: 80
+docker_extra_port:
+docker_privileged: yes
+docker_image_default: "tmeralus/nagios"
 
-# Docker data dir location if not default
-docker_data_volume: "/opt/docker/data"
+docker_privileged:
+docker_state:
+docker_use_tls:
+docker_stop_timeout:
+docker_use_docker_connection:
+docker_exposed:
+docker_volumes:
+docker_restart:
+docker_pull:
+cdocker_command:
+
+# docker system requirements
+# https://docs.ansible.com/ansible/latest/modules/docker_container_module.html
+
+
+#    Docker API >= 1.20
+#    Docker SDK for Python: Please note that the docker-py Python module has been superseded by docker (see here for details). For Python 2.6, docker-py must be used. Otherwise, it is recommended to install the docker Python module. Note that both modules should not be installed at the same time. Also note that when both modules are installed and one of them is uninstalled, the other might no longer function and a reinstall of it is required.
+#    Docker SDK for Python >= 1.8.0 (use docker-py for Python 2.6)
