@@ -12,18 +12,7 @@
 #    state: directory
 #  with_items:
 #    - "{{ docker_volumes }}"
-#  become: true 
-
-- name: create nagios volume directory if they don't exist
-  file:
-    path: "{{ item }}"
-    state: directory
-    owner: docker
-    group: docker
-    mode: 0775
-  with_items:
-    - "{{ docker_volumes }}"
-  #  - /data/another
+#  become: true
 
 # Install Docker and docker-compose .
 - name: Install docker packages

@@ -4,7 +4,7 @@
     image: "{{ docker_container_repo_image }}"
     privileged: "{{ docker_privileged }}"
     exposed_ports: "{{ docker_exposed }}"
-    #restart: "{{ docker_restart|default(omit) }}"
+    restart: "yes"
     volumes:
       - /docker/data
       - "/opt/nagios/etc:/configs/"
@@ -21,22 +21,3 @@
 #      - "/opt/nagios/etc/printers:"
 #      - "/opt/nagios/etc/switches:"
 #      - "/opt/nagios/etc/routers:"
-
-#VOLUME "${NAGIOS_HOME}/var"
-#"${NAGIOS_HOME}/etc"
-#"/var/log/apache2"
-#"/opt/Custom-Nagios-Plugins"
-#"/opt/nagiosgraph/var"
-#"/opt/nagiosgraph/etc"
-
-#- name: Re-create a redis container
-#  docker_container:
-#    name: myredis
-#    image: redis
-#    command: redis-server --appendonly yes
-#    state: present
-#    recreate: yes
-#    exposed_ports:
-#      - 6379
-#    volumes_from:
-#      - mydata

@@ -3,6 +3,7 @@
 docker_python_pip_ver: 3.6
 docker_use_docker_connection: true
 docker_pip3x_pkgs: [ 'docker>4.1.0', 'docker-compose>1.17.1' ]
+docker_pkgs: [ 'docker', 'docker-compose' ]
 monitoring_images:
   -"tmeralus/nagios-plugins"
 
