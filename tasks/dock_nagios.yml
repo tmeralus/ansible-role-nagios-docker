@@ -6,8 +6,8 @@
     exposed_ports: "{{ docker_exposed }}"
     #restart: "{{ docker_restart|default(omit) }}"
     volumes:
-      - /docker/data
       - "/opt/nagios/etc:/configs/"
+      - "/opt/nagiosgraph/:/configs/nagiosgraph/"
 #      - "/opt/nagios/etc/objects/commands.cfg:"
 #      - "/opt/nagios/etc/objects/contacts.cfg:"
 #      - "/opt/nagios/etc/objects/timeperiods.cfg:"
